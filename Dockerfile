@@ -9,6 +9,9 @@ RUN apt-get update && \
     git \
   && rm -rf /var/lib/apt/lists/*
 
+RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu
+
+FROM base as node
 ARG NODE_VERSION=18
 ENV NODE_VERSION=$NODE_VERSION
 RUN wget -qO- https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
@@ -16,26 +19,40 @@ RUN wget -qO- https://deb.nodesource.com/setup_${NODE_VERSION}.x | bash - \
   && npm install -g yarn \
   && rm -rf /var/lib/apt/lists/*
 
+FROM base as kubectl
 ARG KUBECTL_VERSION=v1.25.0
 ENV KUBECTL_VERSION=$KUBECTL_VERSION
 RUN curl -sL https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64/kubectl > /usr/local/bin/kubectl \
   && chmod +x /usr/local/bin/kubectl
 
+FROM base as gomplate
 ARG GOMPLATE_VERSION=v1.9.0
 ENV GOMPLATE_VERSION=$GOMPLATE_VERSION
 RUN curl -sL https://github.com/SocialGouv/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64 > /tmp/gomplate \
   && mv /tmp/gomplate /usr/local/bin/gomplate \
   && chmod +x /usr/local/bin/gomplate
 
-RUN useradd -rm -d /home/ubuntu -s /bin/bash -g root -G sudo -u 1000 ubuntu
+FROM base as rollout-status
+ARG ROLLOUT_STATUS_VERSION=v1.9.1
+ENV ROLLOUT_STATUS_VERSION=$ROLLOUT_STATUS_VERSION
+RUN curl -sL https://github.com/SocialGouv/rollout-status/releases/download/${ROLLOUT_STATUS_VERSION}/rollout-status-${ROLLOUT_STATUS_VERSION}-linux-amd64 > /tmp/rollout-status \
+  && mv /tmp/rollout-status /usr/local/bin/rollout-status \
+  && chmod +x /usr/local/bin/rollout-status
+
+FROM base as snip
+ARG SNIP_VERSION=v1.9.1
+ENV SNIP_VERSION=$SNIP_VERSION
+RUN curl -sL https://github.com/devthejo/snip/releases/download/${SNIP_VERSION}/snip-${SNIP_VERSION}-linux-amd64 > /tmp/snip \
+  && mv /tmp/snip /usr/local/bin/snip \
+  && chmod +x /usr/local/bin/snip
 
 ## PREPARE (package.json to avoid node_modules cache invalidation on version bumping)
-FROM base as preparation
+FROM node as preparation
 COPY package.json /app/
 RUN node -e "fs.writeFileSync('/app/package.json', JSON.stringify({ ...JSON.parse(fs.readFileSync('/app/package.json')), version: '0.0.0' }));"
 
 ## BUILD ENVIRONMENTS
-FROM base as server
+FROM node as server
 ARG NODE_ENV
 ENV NODE_ENV=$NODE_ENV
 

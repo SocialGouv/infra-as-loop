@@ -2,9 +2,7 @@ schedule: "0 0 * * *" # every day at 00:00
 createNamespace: true
 image: ghcr.io/socialgouv/infra-as-loop:latest
 mountSecrets:
-  - name: rancher
-  - name: kubeconfig
-  - name: github
+  - name: keys-of-the-kingdom
 resources:
   limits:
     cpu: "2"
@@ -13,8 +11,6 @@ resources:
     cpu: 500m
     memory: 512Mi
 component: 
-config: |
-  play:
-    name: main
-    title: "Main loop"
-  
+
+files: {}
+#   snip.jsonnet: |

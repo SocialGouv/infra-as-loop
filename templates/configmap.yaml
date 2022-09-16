@@ -8,4 +8,6 @@ metadata:
   namespace: "{{ .Release.Namespace }}"
   {{ end }}
 data:
-  config.yaml: {{ tpl .Values.config . | quote }}
+  {{ range $file, $content := .Values.files }}
+  {{ $file }}: {{ tpl $content . | quote }}
+  {{ end }}

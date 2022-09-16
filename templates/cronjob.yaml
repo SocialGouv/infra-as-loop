@@ -30,9 +30,11 @@ spec:
               imagePullPolicy: Always
               args: ["play"]
               volumeMounts:
-                - name: config-volume
-                  mountPath: /app/.infra-as-loop/config.yaml
-                  subPath: config.yaml
+                {{ range $file := (keys .Values.files) }}
+                - name: "config-{{ $file }}"
+                  mountPath: "/app/{{ $file }}"
+                  subPath: "{{ $file }}"
+                {{ end }}
                 {{ range $secret := .Values.mountSecrets }}
                 - name: secret-{{ $secret.name }}
                   mountPath: /secrets/{{ $secret.name }}
