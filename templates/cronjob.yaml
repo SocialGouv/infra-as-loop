@@ -28,7 +28,9 @@ spec:
             - name: run-loop
               image: {{ .Values.image }}
               imagePullPolicy: Always
-              args: ["play"]
+              args:
+                - snip
+                - play
               volumeMounts:
                 {{ range $file := (keys .Values.files) }}
                 - name: "config-{{ $file }}"
