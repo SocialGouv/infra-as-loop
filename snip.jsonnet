@@ -40,29 +40,25 @@ local envOr = std.native("envOr");
           {
             loop_on: "startups as startup",
             vars: {
-              CI_NAMESPACE: "${startup_name}-ci",
+              CI_NAMESPACE: "${STARTUP_NAME}-ci",
             },
             play: [
               {
                 loop_on: "clusters as cluster",
                 loop_sequential: true,
-                vars: {
-                  CLUSTER_NAME: "${cluster_name}",
-                },
+                // vars: {
+                //   CLUSTER_NAME: "${CLUSTER_NAME}",
+                // },
                 play: [
-                  {
-                    play: [
-                      
-                      "demo/hello.md",
-                    ],
-                  },
+                  "rancher/load-cluster-id.md",
+                  "rancher/load-cluster-kubeconfig.md",
                   {
                     vars: {
                       NAMESPACE: "$CI_NAMESPACE",
-                      RANCHER_PROJECT_NAME: "$startup_name",
+                      PROJECT_NAME: "$STARTUP_NAME",
                     },
                     play: [
-                      // "rancher/create-project.md",
+                      "rancher/create-project.md",
                       // "rancher/load-project-id.md",
                       // "k8s/namespace.md",
                       // "rancher/namespace-to-project.md",
