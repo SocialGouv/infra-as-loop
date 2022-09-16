@@ -1,6 +1,6 @@
 {
   "name": "infra-as-loop",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Infra as Code on idempotency pipelines framework ☀️",
   "license": "MIT",
   "author": {

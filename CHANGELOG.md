@@ -2,6 +2,19 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/SocialGouv/infra-as-loop/compare/v1.0.4...v1.1.0) (2022-09-16)
+
+
+### Features
+
+* create rancher project ([39e9846](https://github.com/SocialGouv/infra-as-loop/commit/39e9846bb16770098f361ad2a8571e5d07feae59))
+
+
+### Bug Fixes
+
+* cronjob args ([88f64fe](https://github.com/SocialGouv/infra-as-loop/commit/88f64fea1dd1d96c84e3cb28ffecf34a8d6c5ac1))
+* scripts ([05248db](https://github.com/SocialGouv/infra-as-loop/commit/05248dba9513dfd51fbce82ffb9ef74eb261b0b4))
+
 ### [1.0.4](https://github.com/SocialGouv/infra-as-loop/compare/v1.0.3...v1.0.4) (2022-09-16)
 
 
