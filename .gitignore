@@ -1,5 +1,6 @@
 snip.json
 node_modules
+.env
 
 .pnp.*
 .yarn/*
