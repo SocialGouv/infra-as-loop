@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/SocialGouv/infra-as-loop/compare/v1.0.2...v1.0.3) (2022-09-16)
+
+
+### Bug Fixes
+
+* docker ([627699a](https://github.com/SocialGouv/infra-as-loop/commit/627699aad4e9bfc8277c26a7e751870ad4b850c2))
+
 ### [1.0.2](https://github.com/SocialGouv/infra-as-loop/compare/v1.0.1...v1.0.2) (2022-09-16)
 
 
