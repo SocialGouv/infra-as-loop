@@ -51,19 +51,22 @@ FROM node as preparation
 COPY package.json /app/
 RUN node -e "fs.writeFileSync('/app/package.json', JSON.stringify({ ...JSON.parse(fs.readFileSync('/app/package.json')), version: '0.0.0' }));"
 
-## BUILD ENVIRONMENTS
+## FINAL IMAGE
 FROM node as server
+
 ARG NODE_ENV
 ENV NODE_ENV=$NODE_ENV
-
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
-
 RUN mkdir /app && chown 1000 /app
-ENV $PATH=$PATH:/app/bin
+ENV PATH=$PATH:/app/bin
 WORKDIR /app
-
 USER 1000
 CMD ["snip", "play"]
+
+COPY --from=kubectl /usr/local/bin/kubectl /usr/local/bin/kubectl
+COPY --from=gomplate /usr/local/bin/gomplate /usr/local/bin/gomplate
+COPY --from=rollout-status /usr/local/bin/rollout-status /usr/local/bin/rollout-status
+COPY --from=snip /usr/local/bin/snip /usr/local/bin/snip
 
 ### INSTALL (node modules)
 COPY --from=preparation --chown=1000 /app/package.json ./
