@@ -10,6 +10,7 @@ metadata:
 spec:
   concurrencyPolicy: Forbid
   schedule: "{{ .Values.schedule }}"
+  suspend: {{ .Values.suspend }}
   jobTemplate:
     spec:
       template:
