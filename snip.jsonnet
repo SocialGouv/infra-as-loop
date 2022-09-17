@@ -46,9 +46,11 @@ local envOr = std.native("envOr");
               {
                 loop_on: "clusters as cluster",
                 loop_sequential: true,
-                // vars: {
-                //   CLUSTER_NAME: "${CLUSTER_NAME}",
-                // },
+                vars: {
+                  CLUSTER_ID: { from_register: true },
+                  PROJECT_ID: { from_register: true },
+                  KUBECONFIG: { from_var: "CLUSTER_KUBECONFIG_FILE" },
+                },
                 play: [
                   "rancher/load-cluster-id.md",
                   "rancher/load-cluster-kubeconfig.md",
@@ -59,9 +61,9 @@ local envOr = std.native("envOr");
                     },
                     play: [
                       "rancher/create-project.md",
-                      // "rancher/load-project-id.md",
-                      // "k8s/namespace.md",
-                      // "rancher/namespace-to-project.md",
+                      "rancher/load-project-id.md",
+                      "k8s/create-namespace.md",
+                      "k8s/namespace-to-rancher-project.md",
                     ],
                   },
                 ],
