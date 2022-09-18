@@ -40,7 +40,7 @@ RUN curl -sL https://github.com/SocialGouv/rollout-status/releases/download/${RO
   && chmod +x /usr/local/bin/rollout-status
 
 FROM base as snip
-ARG SNIP_VERSION=v1.11.1
+ARG SNIP_VERSION=v1.12.0
 ENV SNIP_VERSION=$SNIP_VERSION
 RUN curl -sL https://github.com/devthejo/snip/releases/download/${SNIP_VERSION}/snip-${SNIP_VERSION}-linux-amd64 > /tmp/snip \
   && mv /tmp/snip /usr/local/bin/snip \
@@ -58,10 +58,10 @@ ARG NODE_ENV
 ENV NODE_ENV=$NODE_ENV
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 RUN mkdir /app && chown 1000 /app
-ENV PATH=$PATH:/app/bin
+ENV PATH=$PATH:/app/bin:/app/node_modules/.bin
 WORKDIR /app
 USER 1000
-CMD ["snip", "play"]
+CMD ["snip", "playbooks"]
 
 COPY --from=kubectl /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=gomplate /usr/local/bin/gomplate /usr/local/bin/gomplate
