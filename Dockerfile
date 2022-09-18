@@ -40,7 +40,7 @@ RUN curl -sL https://github.com/SocialGouv/rollout-status/releases/download/${RO
   && chmod +x /usr/local/bin/rollout-status
 
 FROM base as snip
-ARG SNIP_VERSION=v1.12.0
+ARG SNIP_VERSION=v1.12.2
 ENV SNIP_VERSION=$SNIP_VERSION
 RUN curl -sL https://github.com/devthejo/snip/releases/download/${SNIP_VERSION}/snip-${SNIP_VERSION}-linux-amd64 > /tmp/snip \
   && mv /tmp/snip /usr/local/bin/snip \
@@ -70,7 +70,7 @@ COPY --from=snip /usr/local/bin/snip /usr/local/bin/snip
 
 ### INSTALL (node modules)
 COPY --from=preparation --chown=1000 /app/package.json ./
-COPY --chown=1000 yarn.lock .yarnrc.yml ./
+COPY --chown=1000 yarn.lock .yarnrc.yml .env.default ./
 COPY --chown=1000 .yarn .yarn
 
 #### YARN INSTALL

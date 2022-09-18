@@ -10,3 +10,6 @@ Dockerfile
 .gitignore
 .gitlab-ci.yml
 .npmignore
+
+playbooks/**/*.json
+inventories/**/*.json

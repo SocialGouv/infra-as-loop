@@ -2,24 +2,12 @@ local env = std.native("env");
 local envOr = std.native("envOr");
 
 {
-  log_level: envOr("LOG_LEVEL", "info"),
   play: {
-
+    
     key: "main",
     title: "🌍 declarative infra as loop reconciliation",
-
-    vars_sets: {
-      kubernetes: {
-        RANCHER_HOST: envOr("RANCHER_HOST", "rancher.fabrique.social.gouv.fr"),
-        RANCHER_TOKEN: env("RANCHER_TOKEN"),
-        KUBECONFIG: env("KUBECONFIG"),
-      },
-      github: {
-        GITHUB_TOKEN: env("GITHUB_TOKEN"),
-      },
-    },
     loop_sets: {
-      startups: std.parseYaml(importstr "./startups.yaml"),
+      startups: std.parseYaml(importstr "inventories/startups.yaml"),
       clusters: [
         {
           name: "dev",
@@ -30,12 +18,17 @@ local envOr = std.native("envOr");
       ],
     },
 
+    vars: {
+      RANCHER_HOST: envOr("RANCHER_HOST", "rancher.fabrique.social.gouv.fr"),
+      RANCHER_TOKEN: env("RANCHER_TOKEN"),
+      KUBECONFIG: env("KUBECONFIG"),
+    },
+
     play: [
 
       {
         key: "kubernetes",
         title: "🐳 prepare kubernetes for each startup",
-        loop_on: ["kubernetes"],
         play: [
           {
             loop_on: "startups as startup",
@@ -64,7 +57,7 @@ local envOr = std.native("envOr");
                       "rancher/load-project-id.md",
                       "k8s/create-namespace.md",
                       "k8s/namespace-to-rancher-project.md",
-                      "secrets/deploy-key.k8s.md",
+                      // "secrets/deploy-key.k8s.md",
                     ],
                   },
                 ],
@@ -73,19 +66,6 @@ local envOr = std.native("envOr");
           },
         ],
       },
-
-      // {
-      //   key: "github",
-      //   title: "🐙 prepare github for each startup",
-      //   loop_on: ["github"],
-      //   play: {
-      //     loop_on: "startups",
-      //     play: [
-            
-      //     ],
-      //   },
-      // },
-
     ],
   }
 }

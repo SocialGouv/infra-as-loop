@@ -3680,6 +3680,7 @@ __metadata:
     standard-version: ^9.3.2
     tweetsodium: 0.0.5
     uuid: ^8.3.2
+    valid-json-cli: ^1.4.1
     which: ^2.0.2
     yaml: ^2.1.1
     zx: ^7.0.8
@@ -7233,6 +7234,15 @@ __metadata:
     convert-source-map: "npm:^1.6.0"
     source-map: "npm:^0.7.3"
   checksum: 54ce92bec2727879626f623d02c8d193f0c7e919941fa373ec135189a8382265117f5316ea317a1e12a5f9c13d84d8449052a731fe3306fa4beaafbfa4cab229
+  languageName: node
+  linkType: hard
+
+"valid-json-cli@npm:^1.4.1":
+  version: 1.4.1
+  resolution: "valid-json-cli@npm:1.4.1"
+  bin:
+    validjson: bin/validate.js
+  checksum: 846787b2945f40513424241e66e3f7bbe2b50e0818cf05a028201f12c75008350a7f0b13df0ac8e1825afa180a2dc9a2d94b9488a49d3b0423a33bcf0402180c
   languageName: node
   linkType: hard
 

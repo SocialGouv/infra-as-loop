@@ -9,14 +9,15 @@
     "url": "https://www.fabrique.social.gouv.fr/"
   },
   "scripts": {
-    "postinstall": "link-module-alias && yarn run setup-husky && [ -f .env ] || [ -f .env.sample ] && cp .env.sample .env || true",
+    "postinstall": "link-module-alias && yarn run init:husky && yarn run init:env",
     "lint": "eslint .",
     "trace": "yarn start --no-clean --log-level=trace",
     "debug": "yarn start --no-clean --log-level=debug",
     "start": "PATH=$PATH:$PWD/bin env-cmd snip playbooks",
     "test": "jest tests --passWithNoTests",
     "precommit": "lint-staged",
-    "setup-husky": "[ -d '.husky' ] && husky install || true",
+    "init:husky": "[ -d '.husky' ] && husky install || true",
+    "init:env": "[ ! -f .env ] && cp .env.default .env || true",
     "release": "standard-version",
     "retag": "TAG=$(git describe --tags $(git rev-list --tags --max-count=1) | cut -d '.' -f 1) && git branch -f v1 master && git push -f origin v1",
     "push": "git push -f --follow-tags origin master",
@@ -43,6 +44,7 @@
     "slugify": "^1.6.5",
     "tweetsodium": "0.0.5",
     "uuid": "^8.3.2",
+    "valid-json-cli": "^1.4.1",
     "which": "^2.0.2",
     "yaml": "^2.1.1",
     "zx": "^7.0.8"
