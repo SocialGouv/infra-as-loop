@@ -13,21 +13,29 @@ local envOr = std.native("envOr");
       startups: std.parseYaml(importstr "inventories/startups.yaml"),
     },
     play: [
-      {
-        key: "load-teams",
-        play: "github/load-teams.md",
-      },
-      {
-        key: "load-repositories",
-        play: "github/load-repos.md",
-      },
+      // {
+      //   key: "load-teams",
+      //   play: "github/load-teams.md",
+      // },
+      // {
+      //   key: "load-repositories",
+      //   play: "github/load-repos.md",
+      // },
       {
         key: "load-repositories-by-startup",
         loop_on: "startups as startup",
         vars: {
-          TEAM_NAME: '${STARTUP_TEAM:-$STARTUP_NAME}'
+          TEAM_NAME: "${STARTUP_TEAM:-$STARTUP_NAME}",
         },
-        play: "github/load-repos-by-startup.md",
+        play: [
+          "github/load-repos-by-startup.md",
+          {
+            loop_on: "exec:inventories/github-team-repo",
+            play: [
+              "github/create-deploy-key.md"
+            ]
+          },
+        ]
       },
     ],
   }

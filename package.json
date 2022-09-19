@@ -13,7 +13,7 @@
     "lint": "eslint .",
     "trace": "yarn start --no-clean --log-level=trace",
     "debug": "yarn start --no-clean --log-level=debug",
-    "start": "PATH=$PATH:$PWD/bin env-cmd snip playbooks",
+    "start": "PATH=$PATH:$PWD/bin:$PWD/node_modules/.bin env-cmd snip playbooks",
     "test": "jest tests --passWithNoTests",
     "precommit": "lint-staged",
     "init:husky": "[ -d '.husky' ] && husky install || true",

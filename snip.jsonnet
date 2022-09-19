@@ -6,5 +6,6 @@ local envOr = std.native("envOr");
   playbooks: [
     "github.inventory.jsonnet",
     // "kubernetes.play.jsonnet",
+    // "github.play.jsonnet",
   ],
 }

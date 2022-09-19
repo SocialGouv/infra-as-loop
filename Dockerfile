@@ -40,7 +40,7 @@ RUN curl -sL https://github.com/SocialGouv/rollout-status/releases/download/${RO
   && chmod +x /usr/local/bin/rollout-status
 
 FROM base as snip
-ARG SNIP_VERSION=v1.12.2
+ARG SNIP_VERSION=v1.13.0
 ENV SNIP_VERSION=$SNIP_VERSION
 RUN curl -sL https://github.com/devthejo/snip/releases/download/${SNIP_VERSION}/snip-${SNIP_VERSION}-linux-amd64 > /tmp/snip \
   && mv /tmp/snip /usr/local/bin/snip \
