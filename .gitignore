@@ -10,5 +10,6 @@ node_modules
 !.yarn/sdks
 !.yarn/versions
 
-playbooks/**/*.json
-inventories/**/*.json
+/data
+/playbooks/**/*.json
+/.archive

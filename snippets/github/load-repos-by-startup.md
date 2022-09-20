@@ -7,7 +7,7 @@ vars:
   TEAM_NAME:
     required: true
   TEAM_DIR:
-    default: inventories/github-teams/$TEAM_NAME
+    default: data/github-teams/$TEAM_NAME
 check: |
   validjson < $TEAM_DIR/github-repos.json
 tmpdir: false

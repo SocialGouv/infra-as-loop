@@ -1,0 +1,5 @@
+#!/usr/bin/env node
+
+const slug = require("~/utils/kube-slug")
+
+process.stdout.write(slug(process.argv[2]))

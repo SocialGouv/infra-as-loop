@@ -5,7 +5,7 @@ local envOr = std.native("envOr");
   play: {
     
     key: "main",
-    title: "🌍 declarative infra as loop reconciliation",
+    title: "🌍 provisioning kubernetes",
     loop_sets: {
       startups: std.parseYaml(importstr "inventories/startups.yaml"),
       clusters: [
@@ -27,7 +27,7 @@ local envOr = std.native("envOr");
     play: [
 
       {
-        key: "kubernetes",
+        key: "kubernetes-bootstrap",
         title: "🐳 prepare kubernetes for each startup",
         play: [
           {
@@ -63,6 +63,26 @@ local envOr = std.native("envOr");
                 ],
               },
             ],
+          },
+        ],
+      },
+
+      {
+        key: "deploy-keys",
+        title: "🔑 create deploy keys for each repository",
+        loop_on: "startups as startup",
+        vars: {
+          TEAM_NAME: "${STARTUP_TEAM:-$STARTUP_NAME}",
+          CI_NAMESPACE: "${STARTUP_NAME}-ci",
+        },
+        play: [
+          {
+            loop_on: "exec:inventories/github-team-repo.mjs",
+            play: [
+              "github/deploy-key.init-k8s.md",
+              "github/deploy-key.register-gh-repo.md",
+              "github/deploy-key.register-gh-ci.md"
+            ]
           },
         ],
       },

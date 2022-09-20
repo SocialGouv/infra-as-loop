@@ -6,21 +6,17 @@ local envOr = std.native("envOr");
     key: "github-inventory",
     title: "🐙 read github organization",
     vars: {
-      GITHUB_TOKEN: env("GITHUB_TOKEN"),
       GITHUB_ORG: env("GITHUB_ORG"),
+      GITHUB_TOKEN: env("GITHUB_TOKEN"),
     },
     loop_sets: {
       startups: std.parseYaml(importstr "inventories/startups.yaml"),
     },
     play: [
-      // {
-      //   key: "load-teams",
-      //   play: "github/load-teams.md",
-      // },
-      // {
-      //   key: "load-repositories",
-      //   play: "github/load-repos.md",
-      // },
+      {
+        key: "load-teams",
+        play: "github/load-teams.md",
+      },
       {
         key: "load-repositories-by-startup",
         loop_on: "startups as startup",
@@ -29,12 +25,6 @@ local envOr = std.native("envOr");
         },
         play: [
           "github/load-repos-by-startup.md",
-          {
-            loop_on: "exec:inventories/github-team-repo",
-            play: [
-              "github/create-deploy-key.md"
-            ]
-          },
         ]
       },
     ],

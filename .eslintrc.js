@@ -1,4 +1,10 @@
 module.exports = {
+  overrides: [
+    {
+      files: ["*.mjs"],
+      parserOptions: { sourceType: "module" },
+    },
+  ],
   settings: {
     "import/resolver": {
       alias: true,
