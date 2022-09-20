@@ -29,13 +29,11 @@ check: |
 ---
 
 ```bash
-echo
-echo "+ deploy key:"
-echo -n ">> "
-{
+set -x
 curl \
-  -i \
-  -H "Authorization: token $GITHUB_TOKEN"\
+  -X POST \
+  -H "Accept: application/vnd.github+json" \
+  -H "Authorization: Bearer $GITHUB_TOKEN" \
   --data @- https://api.github.com/repos/$GITHUB_ORG/$REPOSITORY_NAME/keys << EOF
 {
   "title" : "$GH_KEY_NAME",
@@ -43,5 +41,4 @@ curl \
   "read_only" : false
 }
 EOF
-} 2>/dev/null | head -1 # status code should be 201
 ```

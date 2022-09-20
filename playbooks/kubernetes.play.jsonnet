@@ -79,6 +79,7 @@ local envOr = std.native("envOr");
           {
             loop_on: "exec:inventories/github-team-repo.mjs",
             play: [
+              // "github/test-repo-rights.md",
               "github/deploy-key.init-k8s.md",
               "github/deploy-key.register-gh-repo.md",
               "github/deploy-key.register-gh-ci.md"
