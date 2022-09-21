@@ -29,7 +29,7 @@ privateKey=$(kubectl -n $CI_NAMESPACE get secrets $KEY_NAME -o jsonpath='{.data.
 export GITHUB_REPO_PUBLIC_KEY=$(curl -s -H "authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/${GITHUB_ORG}/${REPOSITORY_NAME}/actions/secrets/public-key)
 GITHUB_REPO_PUBLIC_KEY_ID=$(echo $GITHUB_REPO_PUBLIC_KEY | jq -r .key_id)
 export BASE64_ENCODED_PUBLIC_KEY=$(echo $GITHUB_REPO_PUBLIC_KEY | jq -r .key)
-encryptedToken=$(echo -n $privateKey | encrypt-secret-for-github-api)
+encryptedToken=$(echo -n "$privateKey" | encrypt-secret-for-github-api)
 
 curl \
   -X PUT \

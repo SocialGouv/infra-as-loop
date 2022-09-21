@@ -17,7 +17,7 @@ check: |
   if [ ! -f id_rsa.key ]; then
     kubectl -n $CI_NAMESPACE get secrets $KEY_NAME -o jsonpath='{.data.PRIVATE_KEY}' | base64 --decode > id_rsa.key
     chmod 0400 id_rsa.key
-    echo $private_key | ssh-keygen -y -f id_rsa.key > id_rsa.pub
+    echo "$private_key" | ssh-keygen -y -f id_rsa.key > id_rsa.pub
   fi
   curl \
     -H "Accept: application/vnd.github+json" \
