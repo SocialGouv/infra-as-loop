@@ -1,6 +1,8 @@
 local env = std.native("env");
 local envOr = std.native("envOr");
 
+local sharedSecretClusterSource = "dev";
+
 {
   play: {
     
@@ -15,6 +17,9 @@ local envOr = std.native("envOr");
         {
           name: "prod",
         },
+      ],
+      sharedSecretClusterTargets: [
+        { name: "prod" },
       ],
     },
 
@@ -57,10 +62,10 @@ local envOr = std.native("envOr");
                       "rancher/load-project-id.md",
                       "k8s/create-namespace.md",
                       "k8s/namespace-to-rancher-project.md",
-                      {
-                        key: "create-project-cluster-kubeconfig",
-                        play: ["rancher/create-project-cluster-kubeconfig.md"]
-                      },
+                      // {
+                      //   key: "create-project-cluster-kubeconfig",
+                      //   play: ["rancher/create-project-cluster-kubeconfig.md"]
+                      // },
                     ],
                   },
                 ],
@@ -81,11 +86,18 @@ local envOr = std.native("envOr");
         play: [
           {
             loop_on: "exec:inventories/github-team-repo.mjs",
+            vars: {
+              KUBECONFIG: env("PWD")+"/data/clusters/"+sharedSecretClusterSource+"/kubeconfig",
+            },
             play: [
               // "github/test-repo-rights.md",
               "github/deploy-key.init-k8s.md",
               "github/deploy-key.register-gh-repo.md",
               "github/deploy-key.register-gh-ci.md"
+              // {
+              //   loop_on: "sharedSecretClusterTargets as cluster",
+              //   play: ["github/deploy-key.share-with-cluster.md"]
+              // },
             ]
           },
         ],
