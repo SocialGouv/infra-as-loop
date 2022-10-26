@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.5](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.4...v1.2.5) (2022-10-26)
+
+
+### Bug Fixes
+
+* dotenv expansion ([184a0e0](https://github.com/SocialGouv/infra-as-loop/commit/184a0e08302717c23c809b4d870298313fe5e015))
+
 ### [1.2.4](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.3...v1.2.4) (2022-10-26)
 
 
