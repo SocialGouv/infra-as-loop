@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.7](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.6...v1.2.7) (2022-10-26)
+
+
+### Bug Fixes
+
+* jq dep ([127010f](https://github.com/SocialGouv/infra-as-loop/commit/127010fd9ec92940244b53ceee8e1064e56e2522))
+
 ### [1.2.6](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.5...v1.2.6) (2022-10-26)
 
 
