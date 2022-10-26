@@ -66,9 +66,10 @@ ENV NODE_ENV=$NODE_ENV
 ENV GIT_SSH_COMMAND="ssh -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no"
 RUN mkdir /app && chown 1000 /app
 ENV PATH=$PATH:/app/bin:/app/node_modules/.bin
+ENV PWD=/app
 WORKDIR /app
 USER 1000
-CMD ["snip", "playbooks"]
+CMD ["yarn", "start"]
 
 COPY --from=kubectl /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=gomplate /usr/local/bin/gomplate /usr/local/bin/gomplate
