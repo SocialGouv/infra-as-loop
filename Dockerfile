@@ -49,7 +49,7 @@ RUN curl --fail -sL https://github.com/devthejo/snip/releases/download/${SNIP_VE
 FROM base as jq
 ARG JQ_VERSION=1.6
 ENV JQ_VERSION=$JQ_VERSION
-RUN curl --fail -sL https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 > /tmp/snip \
+RUN curl --fail -sL https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 > /tmp/jq \
   && mv /tmp/jq /usr/local/bin/jq \
   && chmod +x /usr/local/bin/jq
 
