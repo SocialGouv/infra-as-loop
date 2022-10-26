@@ -28,7 +28,7 @@ RUN curl --fail -sL https://dl.k8s.io/release/${KUBECTL_VERSION}/bin/linux/amd64
 FROM base as gomplate
 ARG GOMPLATE_VERSION=v1.9.0
 ENV GOMPLATE_VERSION=$GOMPLATE_VERSION
-RUN curl --fail -sL https://github.com/SocialGouv/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64 > /tmp/gomplate \
+RUN curl --fail -sL https://github.com/hairyhenderson/gomplate/releases/download/${GOMPLATE_VERSION}/gomplate_linux-amd64 > /tmp/gomplate \
   && mv /tmp/gomplate /usr/local/bin/gomplate \
   && chmod +x /usr/local/bin/gomplate
 
