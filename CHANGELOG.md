@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.3](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.2...v1.2.3) (2022-10-26)
+
+
+### Bug Fixes
+
+* empty repo list ([e4f7087](https://github.com/SocialGouv/infra-as-loop/commit/e4f70871a0fee90daba3cb66a35abac1d89a9499))
+* env start with yarn ([dc71f31](https://github.com/SocialGouv/infra-as-loop/commit/dc71f31bba437f34068a191f0257691cd9e69a59))
+
 ### [1.2.2](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.1...v1.2.2) (2022-10-26)
 
 
