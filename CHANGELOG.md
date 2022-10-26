@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.11](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.10...v1.2.11) (2022-10-26)
+
+
+### Bug Fixes
+
+* add tty ([44804d8](https://github.com/SocialGouv/infra-as-loop/commit/44804d8df62337037efe11d7bcc6b790390ee984))
+* user-agent ([13ba9ae](https://github.com/SocialGouv/infra-as-loop/commit/13ba9ae961e6c4a45fc83ff89e0e3363ab1933e0))
+
 ### [1.2.10](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.9...v1.2.10) (2022-10-26)
 
 
