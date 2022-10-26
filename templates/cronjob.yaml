@@ -17,7 +17,7 @@ spec:
         metadata:
         spec:
           volumes:
-            - name: config-volume
+            - name: volume-config
               configMap:
                 name: {{ or .Values.component .Chart.Name }}-config
             {{ range $secret := .Values.mountSecrets }}
@@ -33,6 +33,9 @@ spec:
                 - snip
                 - play
               volumeMounts:
+                - name: volume-config
+                  mountPath: /app/.infra-as-loop/config.yaml
+                  subPath: config.yaml
                 {{ range $file := (keys .Values.files) }}
                 - name: "config-{{ $file }}"
                   mountPath: "/app/{{ $file }}"
@@ -45,6 +48,10 @@ spec:
               env:
                 - name: IAL_HOMEDIR
                   value: /app/.infra-as-loop
+              envFrom:
+                {{- if gt (len .Values.envFrom) 0 }}
+                {{- tpl (.Values.envFrom | toYaml) . | nindent 16 }}
+                {{- end }}
               resources:
                 limits:
                   cpu: {{ .Values.resources.limits.cpu }}
