@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.2.9](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.8...v1.2.9) (2022-10-26)
+
+
+### Bug Fixes
+
+* wip ([a7a719c](https://github.com/SocialGouv/infra-as-loop/commit/a7a719cce1390279af6a8b2a1b45d54be0dd9135))
+
 ### [1.2.8](https://github.com/SocialGouv/infra-as-loop/compare/v1.2.7...v1.2.8) (2022-10-26)
 
 
