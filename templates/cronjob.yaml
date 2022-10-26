@@ -17,7 +17,7 @@ spec:
         metadata:
         spec:
           volumes:
-            - name: volume-config
+            - name: config-volume
               configMap:
                 name: {{ or .Values.component .Chart.Name }}-config
             {{ range $secret := .Values.mountSecrets }}
@@ -33,9 +33,6 @@ spec:
                 - snip
                 - play
               volumeMounts:
-                - name: volume-config
-                  mountPath: /app/.infra-as-loop/config.yaml
-                  subPath: config.yaml
                 {{ range $file := (keys .Values.files) }}
                 - name: "config-{{ $file }}"
                   mountPath: "/app/{{ $file }}"
