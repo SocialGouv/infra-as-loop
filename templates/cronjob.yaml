@@ -34,11 +34,8 @@ spec:
                 - snip
                 - play
               volumeMounts:
-                - name: volume-config
-                  mountPath: /app/.infra-as-loop/config.yaml
-                  subPath: config.yaml
                 {{ range $file := (keys .Values.files) }}
-                - name: "config-{{ $file }}"
+                - name: "volume-config"
                   mountPath: "/app/{{ $file }}"
                   subPath: "{{ $file }}"
                 {{ end }}
