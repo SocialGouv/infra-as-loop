@@ -20,5 +20,6 @@ curl \
   -H "Authorization: Bearer $GITHUB_TOKEN" \
   -f \
   https://api.github.com/orgs/$GITHUB_ORG/teams/$TEAM_NAME/repos \
-    > $TEAM_DIR/github-repos.json
+    > $TEAM_DIR/github-repos.json || \
+    echo "[]" > $TEAM_DIR/github-repos.json
 ```
