@@ -13,7 +13,7 @@ spec:
   suspend: {{ .Values.suspend }}
   jobTemplate:
     spec:
-      backoffLimit: {{ .Value.backoffLimit }}
+      backoffLimit: {{ .Values.backoffLimit }}
       template:
         metadata:
         spec:
