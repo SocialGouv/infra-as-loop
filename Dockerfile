@@ -50,8 +50,8 @@ FROM base as jq
 ARG JQ_VERSION=1.6
 ENV JQ_VERSION=$JQ_VERSION
 RUN curl --fail -sL https://github.com/stedolan/jq/releases/download/jq-${JQ_VERSION}/jq-linux64 > /tmp/snip \
-  && mv /tmp/snip /usr/local/bin/snip \
-  && chmod +x /usr/local/bin/snip
+  && mv /tmp/jq /usr/local/bin/jq \
+  && chmod +x /usr/local/bin/jq
 
 ## PREPARE (package.json to avoid node_modules cache invalidation on version bumping)
 FROM node as preparation
@@ -75,6 +75,7 @@ COPY --from=kubectl /usr/local/bin/kubectl /usr/local/bin/kubectl
 COPY --from=gomplate /usr/local/bin/gomplate /usr/local/bin/gomplate
 COPY --from=rollout-status /usr/local/bin/rollout-status /usr/local/bin/rollout-status
 COPY --from=snip /usr/local/bin/snip /usr/local/bin/snip
+COPY --from=jq /usr/local/bin/jq /usr/local/bin/jq
 
 ### INSTALL (node modules)
 COPY --from=preparation --chown=1000 /app/package.json ./
