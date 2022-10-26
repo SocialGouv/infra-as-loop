@@ -26,7 +26,6 @@ while true; do
   JSONFILE_PAGE=$TEAM_DIR/github-repos-page-${PAGE}.json
   curl \
     -H "Accept: application/vnd.github+json" \
-    -H "User-Agent: infra-as-loop" \
     -H "Authorization: Bearer $GITHUB_TOKEN" \
     -f \
     "https://api.github.com/orgs/$GITHUB_ORG/teams/$TEAM_NAME/repos?page=${PAGE}&per_page=100" > $JSONFILE_PAGE

@@ -15,7 +15,6 @@ vars:
 check: |
   curl \
     -H "Accept: application/vnd.github+json" \
-    -H "User-Agent: infra-as-loop" \
     -H "Authorization: Bearer $GITHUB_TOKEN" \
     -f \
     https://api.github.com/repos/$GITHUB_ORG/$REPOSITORY_NAME/actions/secrets \
@@ -27,7 +26,7 @@ check: |
 KEY_NAME=$(kube-slug "deploy-key-$REPOSITORY_NAME")
 privateKey=$(kubectl -n $CI_NAMESPACE get secrets $KEY_NAME -o jsonpath='{.data.PRIVATE_KEY}' | base64 --decode)
 
-export GITHUB_REPO_PUBLIC_KEY=$(curl -s -H "User-Agent: infra-as-loop" -H "authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/${GITHUB_ORG}/${REPOSITORY_NAME}/actions/secrets/public-key)
+export GITHUB_REPO_PUBLIC_KEY=$(curl -s -H "authorization: Bearer $GITHUB_TOKEN" https://api.github.com/repos/${GITHUB_ORG}/${REPOSITORY_NAME}/actions/secrets/public-key)
 GITHUB_REPO_PUBLIC_KEY_ID=$(echo $GITHUB_REPO_PUBLIC_KEY | jq -r .key_id)
 export BASE64_ENCODED_PUBLIC_KEY=$(echo $GITHUB_REPO_PUBLIC_KEY | jq -r .key)
 encryptedToken=$(echo -n "$privateKey" | encrypt-secret-for-github-api)
@@ -35,7 +34,6 @@ encryptedToken=$(echo -n "$privateKey" | encrypt-secret-for-github-api)
 curl \
   -X PUT \
   -H "Accept: application/vnd.github.v3+json" \
-  -H "User-Agent: infra-as-loop" \
   -u "$GITHUB_USERNAME:$GITHUB_TOKEN" \
   "https://api.github.com/repos/${GITHUB_ORG}/${REPOSITORY_NAME}/actions/secrets/${SECRET_NAME}" \
   -d '{"encrypted_value":"'${encryptedToken}'","key_id": "'${GITHUB_REPO_PUBLIC_KEY_ID}'"}'      

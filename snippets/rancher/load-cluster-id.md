@@ -11,5 +11,5 @@ register_vars:
 ---
 
 ```bash
-CLUSTER_ID=`curl -s -H "User-Agent: infra-as-loop" -H "Authorization: Bearer $RANCHER_TOKEN" https://$RANCHER_HOST/v3/clusters | jq -r '.data | .[] | select( .name == "'$CLUSTER_NAME'" ) | .id'`
+CLUSTER_ID=`curl -s -H "Authorization: Bearer $RANCHER_TOKEN" https://$RANCHER_HOST/v3/clusters | jq -r '.data | .[] | select( .name == "'$CLUSTER_NAME'" ) | .id'`
 ```

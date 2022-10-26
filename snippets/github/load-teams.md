@@ -15,7 +15,6 @@ tmpdir: false
 mkdir -p `dirname $TEAM_DATA_FILE`
 curl \
   -H "Accept: application/vnd.github+json" \
-  -H "User-Agent: infra-as-loop" \
   -H "Authorization: Bearer $GITHUB_TOKEN" \
   -f \
   https://api.github.com/orgs/$GITHUB_ORG/teams \
