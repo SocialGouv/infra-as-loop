@@ -93,7 +93,7 @@ local sharedSecretClusterSource = "dev";
               // "github/test-repo-rights.md",
               "github/deploy-key.init-k8s.md",
               "github/deploy-key.register-gh-repo.md",
-              "github/deploy-key.register-gh-ci.md"
+              "github/deploy-key.register-gh-ci.md",
               // {
               //   loop_on: "sharedSecretClusterTargets as cluster",
               //   play: ["github/deploy-key.share-with-cluster.md"]
