@@ -1,51 +1,52 @@
 ---
-name: team-test-bootstrap
+name: fictive-startup
 ---
-name: sample-next-app
-# team: team-test-bootstrap
+name: sre
 ---
-name: archifiltre
----
-name: carnet-de-bord
----
-name: cdtn
-team: code-du-travail
----
-name: domifa
----
-name: dora
----
-name: egapro
----
-name: emjpm
----
-name: enfants-du-spectacle
----
-name: fabrique
----
-name: fce
----
-name: les1000jours
-team: nos1000jours
----
-name: mano
----
-name: mon-psy-sante
-team: monpsy
----
-name: monsuivipsy
-team: jardinmental
----
-name: ozensemble
-team: oz-ensemble
----
-name: ressourcerie
----
-name: reva
----
-name: secretariat
----
-name: transition-collective
----
-name: tumeplay
+# name: sample-next-app
+# ---
+# name: archifiltre
+# ---
+# name: carnet-de-bord
+# ---
+# name: cdtn
+# team: code-du-travail
+# ---
+# name: domifa
+# ---
+# name: dora
+# ---
+# name: egapro
+# ---
+# name: emjpm
+# ---
+# name: enfants-du-spectacle
+# ---
+# name: fabrique
+# ---
+# name: fce
+# ---
+# name: les1000jours
+# team: nos1000jours
+# ---
+# name: mano
+# ---
+# name: mon-psy-sante
+# team: monpsy
+# ---
+# name: monsuivipsy
+# team: jardinmental
+# ---
+# name: ozensemble
+# team: oz-ensemble
+# ---
+# name: ressourcerie
+# ---
+# name: reva
+# ---
+# name: secretariat
+# ---
+# name: transition-collective
+# ---
+# name: tumeplay
 ---

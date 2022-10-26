@@ -57,7 +57,10 @@ local envOr = std.native("envOr");
                       "rancher/load-project-id.md",
                       "k8s/create-namespace.md",
                       "k8s/namespace-to-rancher-project.md",
-                      // "secrets/deploy-key.k8s.md",
+                      {
+                        key: "create-project-cluster-kubeconfig",
+                        play: ["rancher/create-project-cluster-kubeconfig.md"]
+                      },
                     ],
                   },
                 ],
