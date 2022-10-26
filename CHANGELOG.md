@@ -2,6 +2,31 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/SocialGouv/infra-as-loop/compare/v1.1.1...v1.2.0) (2022-10-26)
+
+
+### Features
+
+* add startups inventory ([ea49d83](https://github.com/SocialGouv/infra-as-loop/commit/ea49d83f321e0c0a5979ff4fea1a37016209c06b))
+* big wip on dynamic inventory ([c89ebe2](https://github.com/SocialGouv/infra-as-loop/commit/c89ebe25e40da0140d4db7e54587787272628629))
+* ci namespaces ([bf40186](https://github.com/SocialGouv/infra-as-loop/commit/bf4018638b5084500cca83891211fcfe6ed2237c))
+* playbooks + gh + many wip ([34a97fc](https://github.com/SocialGouv/infra-as-loop/commit/34a97fc5366dd2492840ae4d1245909fce11ddb4))
+* playbooks + wip ([21846cd](https://github.com/SocialGouv/infra-as-loop/commit/21846cd098b5a5e9749ea2c5407fb430bcb592bb))
+* provision deploy keys ([1ed7e13](https://github.com/SocialGouv/infra-as-loop/commit/1ed7e135198ffe37b921840522d40c3354c08169))
+
+
+### Bug Fixes
+
+* add jq to docker image ([f7ad484](https://github.com/SocialGouv/infra-as-loop/commit/f7ad48489e99be94c0b58c76423bf88b45932dc5))
+* backoffLimit ([f5ee4bf](https://github.com/SocialGouv/infra-as-loop/commit/f5ee4bf3b54e0bbafe35a256240bf0142c1da1c1))
+* cronjob volume config ([2cbbf77](https://github.com/SocialGouv/infra-as-loop/commit/2cbbf7763e0d2d44b47c523d4a220904375f6f1d))
+* cronjob volume config ([1038553](https://github.com/SocialGouv/infra-as-loop/commit/1038553d8dc31290216f8fbcd91410095e32530c))
+* deploy key register gh and test repo rights ([f354cab](https://github.com/SocialGouv/infra-as-loop/commit/f354cabd6d31c0b75f6fe3034aa1d84b99d421e9))
+* ssh key ln ([b01bedb](https://github.com/SocialGouv/infra-as-loop/commit/b01bedbf5f0e02c4b02fb657f07701bab62a23c9))
+* suspend cronjob by default ([983394e](https://github.com/SocialGouv/infra-as-loop/commit/983394eaafcd71b4d7dd3b2b3db432e5507468f4))
+* wip ([0b4246f](https://github.com/SocialGouv/infra-as-loop/commit/0b4246fbf20ded61a531ea75c3fdec34571a9ee5))
+* wip ([40efb0c](https://github.com/SocialGouv/infra-as-loop/commit/40efb0c050569eeb8d7265ba57e84c669a8c8a34))
+
 ### [1.1.1](https://github.com/SocialGouv/infra-as-loop/compare/v1.1.0...v1.1.1) (2022-09-17)
 
 
