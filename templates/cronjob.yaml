@@ -32,7 +32,7 @@ spec:
               imagePullPolicy: Always
               args:
                 - snip
-                - play
+                - playbooks
               volumeMounts:
                 {{ range $file := (keys .Values.files) }}
                 - name: "volume-config"
