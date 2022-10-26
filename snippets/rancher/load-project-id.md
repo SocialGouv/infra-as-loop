@@ -14,7 +14,7 @@ register_vars:
 ---
 
 ```bash
-FULL_PROJECT_ID=`curl -s -H "Authorization: Bearer $RANCHER_TOKEN" https://$RANCHER_HOST/v3/clusters/$CLUSTER_ID/projects | jq -r '.data | .[] | select( .name == "'$PROJECT_NAME'") | .id'`
+FULL_PROJECT_ID=`curl -s -H "User-Agent: infra-as-loop" -H "Authorization: Bearer $RANCHER_TOKEN" https://$RANCHER_HOST/v3/clusters/$CLUSTER_ID/projects | jq -r '.data | .[] | select( .name == "'$PROJECT_NAME'") | .id'`
 
 PROJECT_ID=${FULL_PROJECT_ID#*:}
 ```

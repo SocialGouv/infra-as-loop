@@ -12,7 +12,7 @@ tmpdir: false
 ---
 
 ```bash
-CLUSTER_KUBECONFIG=`curl -s -X POST -H "Authorization: Bearer $RANCHER_TOKEN" https://$RANCHER_HOST/v3/clusters/${CLUSTER_ID}?action=generateKubeconfig | jq -r '.config'`
+CLUSTER_KUBECONFIG=`curl -s -X POST -H "User-Agent: infra-as-loop" -H "Authorization: Bearer $RANCHER_TOKEN" https://$RANCHER_HOST/v3/clusters/${CLUSTER_ID}?action=generateKubeconfig | jq -r '.config'`
 
 CLUSTER_KUBECONFIG_FILE="$PWD/data/clusters/${CLUSTER_NAME}/kubeconfig"
 

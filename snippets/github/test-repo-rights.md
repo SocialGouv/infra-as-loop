@@ -11,6 +11,7 @@ pre_check: |
   curl \
     -f \
     -H "Accept: application/vnd.github+json" \
+    -H "User-Agent: infra-as-loop" \
     -H "Authorization: Bearer $GITHUB_TOKEN" \
     https://api.github.com/repos/$GITHUB_ORG/$REPOSITORY_NAME/keys
 tmpdir: false
