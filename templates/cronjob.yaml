@@ -29,6 +29,7 @@ spec:
           containers:
             - name: run-loop
               image: {{ .Values.image }}
+              tty: true
               imagePullPolicy: Always
               args:
                 - yarn
